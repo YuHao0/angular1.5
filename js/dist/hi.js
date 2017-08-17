@@ -1,0 +1,1 @@
+!function(t){t.controller("hi.test1Controller",["$scope",function(t){var o=this;o.msg="hi-test1"}])}(angular.module("app")),function(t){t.controller("hi.test2Controller",["$scope",function(t){var o=this;o.msg="hi-test2"}])}(angular.module("app"));

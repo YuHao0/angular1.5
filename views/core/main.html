@@ -1,0 +1,17 @@
+<nav class="nav-bar">
+    <h1 class="title">{{ctrl.msg}}</h1>
+    <ul>
+        <li ng-class="{'ui-active':$state.includes('hi')}">
+            <a ui-sref="hi.test1">hi</a>
+        </li>
+        <li ng-class="{'ui-active':$state.includes('test')}">
+            <a ui-sref="test.test1">test</a>
+        </li>
+    </ul>
+</nav>
+<ul class="second-bar">
+    <li ng-repeat="item in ctrl.menu" ui-sref-active="ui-active" ng-show="$state.includes(item.parent)">
+        <a ui-sref="{{item.name}}">{{item.name}}</a>
+    </li>
+</ul>
+<div ui-view class="main-view"></div>
