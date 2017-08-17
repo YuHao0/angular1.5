@@ -1,14 +1,14 @@
-#基于angularJs的spa应用
+# 基于angularJs的spa应用
 
-##first
+## first
 
 	npm install 安装相关依赖
 
-###启动
+### 启动
 
 	npm ren dev
 
-####项目中用到的技术
+#### 项目中用到的技术
 
 `
 angularjs
