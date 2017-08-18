@@ -4,6 +4,6 @@
 
             var $this = this;
             $this.msg = 'test-test1';
-
+            $this.hi = 123;
         }]);
 })(angular.module('app'));

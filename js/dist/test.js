@@ -1,1 +1,0 @@
-!function(t){t.controller("test.test1Controller",["$scope","$state",function(t,e){var o=this;o.msg="test-test1"}])}(angular.module("app")),function(t){t.controller("test.test2Controller",["$scope",function(t){var e=this;e.msg="test-test2"}])}(angular.module("app"));
