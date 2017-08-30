@@ -1,0 +1,148 @@
+[ng-cloak] {
+    display: none
+}
+
+#app {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    background: #fff;
+}
+
+.title {
+    padding: 1rem;
+    font-size: 2rem;
+    color: #333;
+    background: #ddd;
+}
+
+.aside-bar {
+    width: 5rem;
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    bottom: 0;
+    background: #222;
+    li {
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        a {
+            display: block;
+            padding: 0.5rem;
+            color: #fff;
+        }
+    }
+    .ui-active {
+        background: #005d81;
+    }
+}
+
+.section {
+    padding: 0.5rem;;
+    margin-left: 5rem;
+    .nav {
+        border-bottom: 1px solid #ddd;
+        li {
+            float: left;
+            margin-bottom: -1px;
+            a {
+                display: block;
+                font-size: 0.8rem;
+                padding: 0.5rem;
+                color: #666;
+                border: 1px solid transparent;
+                &:hover {
+                    background-color: #eee;
+                    border-color: #eee #eee #ddd;
+                }
+            }
+        }
+        .ui-active {
+            a,a:hover {
+                color:#333;
+                font-weight: bold;
+                cursor: default;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                background-color: #fff;
+                border-bottom-color: transparent;
+            }
+        }
+    }
+
+    .main-view {
+        margin: 2rem;
+        border: 1px solid gold;
+        min-height: 5rem;
+    }
+}
+
+
+// Clearfix
+//
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//    contenteditable attribute is included anywhere else in the document.
+//    Otherwise it causes space to appear at the top and bottom of elements
+//    that are clearfixed.
+// 2. The use of `table` rather than `block` is only necessary if using
+//    `:before` to contain the top-margins of child elements.
+//
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+
+
+.clear-fix {
+    &:before,
+    &:after {
+        content: " "; // 1
+        display: table; // 2
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+
+//
+// Close icons
+// --------------------------------------------------
+
+
+.close {
+    float: right;
+    font-size: (@font-size-base * 1.5);
+    font-weight: @close-font-weight;
+    line-height: 1;
+    color: @close-color;
+    text-shadow: @close-text-shadow;
+    .opacity(.2);
+
+    &:hover,
+    &:focus {
+        color: @close-color;
+        text-decoration: none;
+        cursor: pointer;
+        outline: none;
+        .opacity(.5);
+    }
+
+    // Additional properties for button version
+    // iOS requires the button element instead of an anchor tag.
+    // If you want the anchor version, it requires `href="#"`.
+    // See https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+    button& {
+        padding: 0;
+        cursor: pointer;
+        background: transparent;
+        border: 0;
+        -webkit-appearance: none;
+    }
+}
+
+.pull-right {
+    float: right !important;
+}
+.pull-left {
+    float: left !important;
+}

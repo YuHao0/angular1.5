@@ -38,8 +38,10 @@ gulp.task('build-lib-js', [], function () {
     return gulp.src([
             './lib/angular/angular.min.js',
             './lib/angular-ui-router/angular-ui-router.min.js',
+            './lib/angular-resource/angular-resource.min.js',
             './lib/ocLazyLoad/ocLazyLoad.min.js',
-            './lib/jquery/jquery.min.js'
+            './lib/jquery/jquery.min.js',
+            './lib/messenger/messenger.min.js'
         ])
         .pipe(concat('lib.min.js', {newLine: '\r\n'}))
         .pipe(gulp.dest('dist/'));
@@ -48,8 +50,9 @@ gulp.task('build-lib-js', [], function () {
 gulp.task('build-common-js', [], function () {
     // 整合配置相关文件和公共js文件
     return gulp.src([
-            'js/core/*.js',
-            'js/config/*.js'
+            'js/config/*.js',
+            'js/dashboard/*.js',
+            'js/core/*.js'
         ])
         .pipe(uglify())
         .pipe(concat('common.min.js', {newLine: '\r\n'}))

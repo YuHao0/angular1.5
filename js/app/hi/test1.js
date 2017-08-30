@@ -5,5 +5,6 @@
             var $this = this;
             $this.msg = 'hi-test1';
 
+
         }]);
 })(angular.module('app'));
