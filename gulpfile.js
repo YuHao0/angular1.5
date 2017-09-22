@@ -51,8 +51,9 @@ gulp.task('build-common-js', [], function () {
     // 整合配置相关文件和公共js文件
     return gulp.src([
             'js/config/*.js',
-            'js/dashboard/*.js',
-            'js/core/*.js'
+            'js/core/dashboard.js',
+            'js/core/utils.js',
+            'js/core/main.js'
         ])
         .pipe(uglify())
         .pipe(concat('common.min.js', {newLine: '\r\n'}))
