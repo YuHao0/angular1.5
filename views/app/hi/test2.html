@@ -1,3 +1,6 @@
 <div ng-controller="hi.test2Controller as ctrl">
-    <p>this is {{ctrl.msg}}</p>
+    <div ng-click="ctrl.download()">download</div>
+    <div  ng-repeat="item in ctrl.test">
+            <a  ng-href="{{item.href}}" download='true' target="_black" id="{{item.id}}">{{item.name}}</a>
+    </div>
 </div>
