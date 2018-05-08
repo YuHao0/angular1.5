@@ -157,16 +157,17 @@
                     // get component element
                     var datetimepicker = $(element).datetimepicker({
                             autoclose: true,
-                            format: element.attr('data-format') || 'yyyy-mm-dd',
+                            format: element.attr('data-format') || 'yyyy-mm-dd HH:ii:00',
                             language: 'zh-CN',
                             pickerPosition: 'bottom-right',
                             minView: attrs.minview || 0,
                             viewSelect: 'year'
                         }),
                         picker = datetimepicker.data('datetimepicker').picker;
-                    datetimepicker.on('changeDate', function () {
-                        scope.testTime(datetimepicker);
-                    });
+
+                    // datetimepicker.on('changeDate', function () {
+                    //     scope.testTime(datetimepicker);
+                    // });
                     // replace the arrow icon
                     picker.find('.icon-arrow-left').replaceWith('<i class="dsb-font dsb-left"></i>');
                     picker.find('.icon-arrow-right').replaceWith('<i class="dsb-font dsb-right"></i>');

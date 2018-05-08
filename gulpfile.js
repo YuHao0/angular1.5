@@ -36,12 +36,12 @@ gulp.task('build-app-js', function () {
 gulp.task('build-lib-js', [], function () {
     // 整合引用的script文件
     return gulp.src([
+            './lib/jquery/jquery.min.js',
+            './lib/messenger/messenger.min.js',
             './lib/angular/angular.min.js',
             './lib/angular-ui-router/angular-ui-router.min.js',
             './lib/angular-resource/angular-resource.min.js',
-            './lib/ocLazyLoad/ocLazyLoad.min.js',
-            './lib/jquery/jquery.min.js',
-            './lib/messenger/messenger.min.js'
+            './lib/ocLazyLoad/ocLazyLoad.min.js'
         ])
         .pipe(concat('lib.min.js', {newLine: '\r\n'}))
         .pipe(gulp.dest('dist/'));
@@ -84,7 +84,7 @@ gulp.task('clean', ['concat-js'], function () {
         .pipe(clean());
 });
 
-gulp.task('rev', ['build-less','concat-js'], function () {
+gulp.task('rev', ['build-less', 'concat-js'], function () {
     // 生成版本号清单
     return gulp.src(['dist/all.*'])
         .pipe(rev())
@@ -125,12 +125,19 @@ gulp.task('add-version', ['rev'], function () {
         .pipe(gulp.dest('./'));
 });
 
-gulp.task('watch', ['build-less', 'build-app-js'], function () {
+gulp.task('watch', ['concat-js', 'build-less', 'build-app-js'], function () {
     // 开启文件监听,自动编译模块中文件
     gulp.watch('less/**/*.less', ['build-less']).on('change', function (event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     });
     gulp.watch('js/app/**/*.js', ['build-app-js']).on('change', function (event) {
+        console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+    });
+    gulp.watch(['js/config/*.js',
+        'js/core/dashboard.js',
+        'js/core/utils.js',
+        'js/core/main.js'
+    ], ['concat-js']).on('change', function (event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     });
 });

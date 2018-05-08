@@ -1,3 +1,10 @@
 <div ng-controller="test.test2Controller as ctrl">
     <p>this is {{ctrl.msg}}</p>
+    <input type="text" id="startTime" class="form-control" data-format="yyyy-mm-dd hh:ii:00" datetimepicker
+           ng-model="startOrderTime" placeholder="开始时间"/>
+    <div ng-click="t()">111</div>
+    <div ng-click="t()">222</div>
+    <div>
+        {{startOrderTime}}
+    </div>
 </div>

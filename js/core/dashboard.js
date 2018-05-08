@@ -1,6 +1,6 @@
 ;(function (app) {
-    app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$httpProvider', '$locationProvider',
-        function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $httpProvider, $locationProvider) {
+    app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$httpProvider', '$provide',
+        function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $httpProvider, $provide) {
             var config = Duoshou.config;
             angular.forEach(config.apps, function (item) {
                 item.serie = true;
@@ -26,7 +26,6 @@
                         };
 
                         if (request.url && !!~request.url.indexOf('h5api') && request.method) {
-                            console.log(request);
                             if (request.method.toUpperCase() === 'GET') {
                                 request.params = $data(request.params || {});
                             } else {
@@ -47,7 +46,6 @@
                         return $q.reject(request)
                     },
                     response: function (response) {
-                        console.log(response);
                         if (response.config) {
                             response.config.autoMask && viewMask.close();
                             response.data.message && response.config.autoTips && tips.success(response.data.message);
@@ -122,43 +120,39 @@
 
             (function init() {
                 $stateProvider
-                    .state('test', {
-                        abstract: true,
-                        url: '/test',
-                        templateUrl: '/views/core/main.html',
-                        resolve: {
-                            loadApp: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                return $ocLazyLoad.load('test');
-                            }]
-                        }
-                    }).state('test.test1', {
-                        url: '/test1',
-                        templateUrl: '/views/app/test/test1.html',
-                        controller: 'test.test1Controller'
-                    }).state('test.test2', {
+                .state('test', {
+                    abstract: true,
+                    url: '/test',
+                    templateUrl: '/views/core/main.html',
+                    resolve: {
+                        loadApp: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            return $ocLazyLoad.load('test');
+                        }]
+                    }
+                }).state('test.test1', {
+                    url: '/test1',
+                    templateUrl: '/views/app/test/test1.html'
+                }).state('test.test2', {
                         url: '/test2',
-                        templateUrl: '/views/app/test/test2.html',
-                        controller: 'test.test2Controller'
+                        templateUrl: '/views/app/test/test2.html'
                     })
 
-                    .state('hi', {
-                        abstract: true,
-                        url: '/hi',
-                        templateUrl: '/views/core/main.html',
-                        resolve: {
-                            loadApp: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                return $ocLazyLoad.load('hi');
-                            }]
-                        }
-                    }).state('hi.test1', {
-                        url: '/test1',
-                        templateUrl: '/views/app/hi/test1.html',
-                        controller: 'hi.test1Controller'
-                    }).state('hi.test2', {
-                        url: '/test2',
-                        templateUrl: '/views/app/hi/test2.html',
-                        controller: 'hi.test2Controller'
-                    });
+                .state('hi', {
+                    abstract: true,
+                    url: '/hi',
+                    templateUrl: '/views/core/main.html',
+                    resolve: {
+                        loadApp: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            return $ocLazyLoad.load('hi');
+                        }]
+                    }
+                }).state('hi.test1', {
+                    url: '/test1',
+                    templateUrl: '/views/app/hi/test1.html'
+                }).state('hi.test2', {
+                    url: '/test2',
+                    templateUrl: '/views/app/hi/test2.html'
+                });
 
                 //$locationProvider.html5Mode(true);
 
